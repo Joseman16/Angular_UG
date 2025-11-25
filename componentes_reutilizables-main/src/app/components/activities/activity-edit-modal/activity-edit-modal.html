@@ -1,0 +1,85 @@
+<!-- FONDO OSCURO DEL MODAL -->
+<div class="modal-backdrop fade show"></div>
+
+<!-- MODAL -->
+<div class="modal d-block" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow">
+      <!-- ENCABEZADO DEL MODAL -->
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Actividad</h5>
+
+        <button type="button" class="btn-close" (click)="close.emit()"></button>
+      </div>
+
+      <!-- CUERPO DEL MODAL -->
+      <div class="modal-body">
+        <!-- FORMULARIO -->
+        <form [formGroup]="form" class="row g-3">
+          <!-- Campo: Título -->
+          <div class="col-md-6">
+            <label class="form-label">Título</label>
+            <input type="text" formControlName="title" class="form-control" />
+          </div>
+
+          <!-- Campo: Fecha -->
+          <div class="col-md-6">
+            <label class="form-label">Fecha</label>
+            <input type="date" formControlName="date" class="form-control" />
+          </div>
+
+          <!-- Campo: Duración -->
+          <div class="col-md-6">
+            <label class="form-label">Duración</label>
+            <input type="text" formControlName="duration" class="form-control" />
+          </div>
+
+          <!-- Campo: Ubicación -->
+          <div class="col-md-6">
+            <label class="form-label">Ubicación</label>
+            <input type="text" formControlName="location" class="form-control" />
+          </div>
+
+          <!-- Campo: Cupos -->
+          <div class="col-md-6">
+            <label class="form-label">Cupos</label>
+            <input type="number" formControlName="capacity" class="form-control" />
+          </div>
+
+          <!-- Campo: Categoría -->
+          <div class="col-md-6">
+            <label class="form-label">Categoría</label>
+            <select formControlName="categoryId" class="form-select">
+              @for (cat of categories; track cat.id) {
+              <option [value]="cat.id">{{ cat.name }}</option>
+              }
+            </select>
+          </div>
+
+          <!-- Campo: Descripción -->
+          <div class="col-12">
+            <label class="form-label">Descripción</label>
+            <textarea rows="3" formControlName="description" class="form-control"></textarea>
+          </div>
+
+          <!-- Campo: Activo  -->
+          <div class="col-12">
+            <div class="form-check mt-2">
+              <input type="checkbox" class="form-check-input" formControlName="active" />
+              <label class="form-check-label">Activo</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN -->
+      <div class="modal-footer">
+        <!-- Botón guardar -->
+        <button class="btn btn-primary" (click)="submit()">Guardar</button>
+
+        <!-- Botón cerrar -->
+        <button class="btn btn-secondary" (click)="close.emit()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
